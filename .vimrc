@@ -125,9 +125,9 @@ Plug 'junegunn/vim-easy-align'          " 快速对齐
 Plug 'luochen1990/rainbow'              " 多彩括号
 Plug 'mileszs/ack.vim'                  " 快速查找
 Plug 'rking/ag.vim'                     " 同ack
-Plug 'iamcco/markdown-preview.vim'
+Plug 'iamcco/markdown-preview.vim'      " makedown
 Plug 'kshenoy/vim-signature'            " 标签显示
-Plug 'mbbill/undotree'
+Plug 'mbbill/undotree'                  " UNDO
 
 call plug#end()            
 
@@ -304,6 +304,8 @@ nmap <silent> <F8> <Plug>MarkdownPreview
 imap <silent> <F8> <Plug>MarkdownPreview
 nmap <silent> <F9> <Plug>StopMarkdownPreview
 imap <silent> <F9> <Plug>StopMarkdownPreview
+
+let g:vim_action_ag_escape_chars = '#%.^$*+?()[{\\|]'
 
 "LINX
 

@@ -30,7 +30,7 @@ An automatic configuration program for vim
 - 安装vimplus
 
     ```bash
-    git clone https://github.com/garytone/vimplus.git ~/.vimplus
+    git clone https://github.com/helloCodeing/vimplus.git ~/.vimplus
     cd ~/.vimplus
     sudo ./install.sh
     ```
@@ -44,7 +44,7 @@ An automatic configuration program for vim
 - 安装vimplus
 
     ```bash
-    git clone https://github.com/garytone/vimplus.git ~/.vimplus
+    git clone https://github.com/helloCodeing/vimplus.git ~/.vimplus
     cd ~/.vimplus
     sudo ./install.sh
     ```
