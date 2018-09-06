@@ -136,11 +136,23 @@ call plug#end()
 if executable('ag')
     let g:ackprg = 'ag --nogroup --nocolor --column'
 endif
-nmap <leader>ck :Ack!<space>-i<space>
 let g:ackhighlight = 1
 let g:ack_qhandler = "botright copen 15"
 let g:ack_autoclose = 1
 let g:ack_use_cword_for_empty_search = 1
+
+command! -nargs=* Search call InputAwareAckSearch(<q-args>)
+nnoremap <Leader>/ :Search<space>
+function! InputAwareAckSearch(args)
+    if len(a:args) > 0
+        " Executes ack by wrapping user input with quotes
+        execute ":Ack! '".a:args."'"
+    else
+        " For no input, executes empty ack, so that word under cursor is searched
+        execute ":Ack!"
+    endif
+endfunction
+
 
 " load vim default plugin
 runtime macros/matchit.vim
@@ -304,9 +316,6 @@ nmap <silent> <F8> <Plug>MarkdownPreview
 imap <silent> <F8> <Plug>MarkdownPreview
 nmap <silent> <F9> <Plug>StopMarkdownPreview
 imap <silent> <F9> <Plug>StopMarkdownPreview
-
-let g:vim_action_ag_escape_chars = '#%.^$*+?()[{\\|]'
-
 "LINX
 
 let g:rainbow_active = 1
