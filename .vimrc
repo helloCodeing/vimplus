@@ -99,6 +99,9 @@ nnoremap <leader>0 :10b<CR>
 call plug#begin('~/.vim/plugged')
 
 "Plug 'skywind3000/vim-keysound'         " 打字机音效
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'skywind3000/vim-preview'
+Plug 'jsfaint/gen_tags.vim'
 Plug 'chxuan/tagbar'                    " 函数列表
 Plug 'Valloric/YouCompleteMe'           " 自动补全
 Plug 'Yggdroot/LeaderF'                 " 神器，函数，文件，搜索
@@ -125,9 +128,9 @@ Plug 'junegunn/vim-easy-align'          " 快速对齐
 Plug 'luochen1990/rainbow'              " 多彩括号
 Plug 'mileszs/ack.vim'                  " 快速查找
 Plug 'rking/ag.vim'                     " 同ack
-Plug 'iamcco/markdown-preview.vim'      " makedown
+Plug 'iamcco/markdown-preview.vim'
 Plug 'kshenoy/vim-signature'            " 标签显示
-Plug 'mbbill/undotree'                  " UNDO
+Plug 'mbbill/undotree'
 
 call plug#end()            
 
@@ -136,11 +139,7 @@ call plug#end()
 if executable('ag')
     let g:ackprg = 'ag --nogroup --nocolor --column'
 endif
-let g:ackhighlight = 1
-let g:ack_qhandler = "botright copen 15"
-let g:ack_autoclose = 1
-let g:ack_use_cword_for_empty_search = 1
-
+"nmap <leader>ck :Ack!<space>-i<space>
 command! -nargs=* Search call InputAwareAckSearch(<q-args>)
 nnoremap <Leader>/ :Search<space>
 function! InputAwareAckSearch(args)
@@ -152,7 +151,10 @@ function! InputAwareAckSearch(args)
         execute ":Ack!"
     endif
 endfunction
-
+let g:ackhighlight = 1
+let g:ack_qhandler = "botright copen 15"
+let g:ack_autoclose = 1
+let g:ack_use_cword_for_empty_search = 1
 
 " load vim default plugin
 runtime macros/matchit.vim
@@ -202,11 +204,7 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_complete_in_comments = 1 
 let g:ycm_complete_in_strings = 1 
 
-if g:ismac
-    let g:ycm_server_python_interpreter = '/usr/local/bin/python2'
-else
-    let g:ycm_server_python_interpreter = '/usr/bin/python2'
-endif
+let g:ycm_server_python_interpreter = '/usr/bin/python'
 
 let g:ycm_python_binary_path = 'python'
 let g:ycm_global_ycm_extra_conf = '~/.ycm_confirm_extra_conf'
@@ -316,6 +314,7 @@ nmap <silent> <F8> <Plug>MarkdownPreview
 imap <silent> <F8> <Plug>MarkdownPreview
 nmap <silent> <F9> <Plug>StopMarkdownPreview
 imap <silent> <F9> <Plug>StopMarkdownPreview
+
 "LINX
 
 let g:rainbow_active = 1
