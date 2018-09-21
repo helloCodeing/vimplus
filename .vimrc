@@ -54,7 +54,7 @@ set ignorecase          " 搜索时大小写不敏感
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 缓存设置
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nobackup            " 设置不备份
 set noswapfile          " 禁止生成临时文件
 set autoread            " 文件在vim之外修改过，自动重新读入
@@ -76,7 +76,7 @@ set fileencodings=utf8,ucs-bom,gbk,cp936,gb2312,gb18030
 call plug#begin('~/.vim/plugged')
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'scrooloose/nerdtree', { 'on':'NERDTreeToggle'}              " 文件列表
-Plug 'w0rp/ale'
+Plug 'w0rp/ale'                         " 语法检查
 Plug 'joereynolds/gtags-scope'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'skywind3000/gutentags_plus'
@@ -84,7 +84,7 @@ Plug 'skywind3000/vim-preview'
 Plug 'chxuan/tagbar'                    " 函数列表
 Plug 'jsfaint/gen_tags.vim'
 Plug 'skywind3000/vim-preview'
-Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-user'            " 文本对象
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-syntax'
 Plug 'kana/vim-textobj-function', { 'for':['c', 'cpp', 'vim', 'go','py'] }
@@ -97,7 +97,7 @@ Plug 'octol/vim-cpp-enhanced-highlight' " C++高亮
 Plug 'vim-airline/vim-airline'          " 状态栏？
 Plug 'Shougo/echodoc.vim'               " 函数提示
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'                 " 代码片段
 Plug 'honza/vim-snippets'
 Plug 'Yggdroot/indentLine'              " 游标线
 Plug 'tpope/vim-surround'               " 成双成对编辑
@@ -108,7 +108,9 @@ Plug 'rking/ag.vim'                     " 同ack
 Plug 'mbbill/undotree'                  " 后悔药
 Plug 'mhinz/vim-startify'
 Plug 'Valloric/YouCompleteMe', {'do':'./install.py --clang-completer --go-completer'}
-Plug 'scrooloose/nerdcommenter'         " 快速注释
+Plug 'tpope/vim-commentary'             " 快速注释
+Plug 'junegunn/vim-easy-align'          " 快速对齐
+Plug 'luochen1990/rainbow'              " 多彩括号
 call plug#end()  
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -326,6 +328,7 @@ nnoremap zpr :setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 color hybrid
 set background=dark
+colorscheme monokai
 
 inoremap jk <esc>
 nnoremap <leader>w <C-W><C-K>
@@ -339,7 +342,7 @@ nnoremap <leader>z zz
 nnoremap <leader>sh :noh<cr>
 nnoremap <leader>q :q!<CR>
 nnoremap <leader>e :edit $MYVIMRC<cr>           " 编辑vimrc文件
-nnoremap <leader>s :source $MYVIMRC<cr>         " 重新加载vimrc文件
+nnoremap <leader><leader>s :source $MYVIMRC<cr>         " 重新加载vimrc文件
 " 安装、更新、删除插件
 nnoremap <leader><leader>i :PlugInstall<cr>
 nnoremap <leader><leader>u :PlugUpdate<cr>
